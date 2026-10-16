@@ -42,3 +42,19 @@ This launches a stdio MCP process and waits for a client. It does not start the 
 6. Retrieve the registry entry and verify that its install configuration works.
 
 A schema-valid manifest is preparation, not registration, certification, or a verified package listing.
+
+## GitHub Actions Trusted Publisher setup
+
+Workflow: `.github/workflows/publish-pypi.yml`. It runs manually from main, defaults to build-only, runs tests and distribution checks, and passes only those artifacts to a separate publishing job. Publishing uses the `pypi` GitHub environment and short-lived OIDC credentials, not a stored API token.
+
+In PyPI account Publishing, add a pending GitHub publisher:
+
+| Field | Value |
+| --- | --- |
+| PyPI project name | guardrails-mcp |
+| Owner | TAM-DS |
+| Repository | guardrails-mcp |
+| Workflow filename | publish-pypi.yml |
+| Environment | pypi |
+
+After configuring PyPI, open the repository Actions tab, select Build and publish PyPI release, Run workflow on main, and select publish only when ready for the public upload. Build-only runs do not need PyPI authentication. Successful workflow execution and PyPI retrieval must be verified before claiming publication. Registry submission is separate.
