@@ -1,6 +1,6 @@
 [project]
 name = "guardrails-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Small, evidence-first prompt regression tracker with MCP tools"
 requires-python = ">=3.11"
 dependencies = ["mcp>=1.20,<2", "openai>=2,<3", "pydantic>=2,<3", "python-dotenv>=1,<2"]

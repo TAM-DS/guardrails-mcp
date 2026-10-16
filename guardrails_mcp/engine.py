@@ -4,7 +4,7 @@ import os
 import time
 import uuid
 from importlib.resources import files
-from .checks import evaluate
+from .checks import EVALUATOR_VERSION, evaluate
 from .contracts import Draft
 from .prompts import PROMPTS
 from . import store
@@ -44,6 +44,8 @@ def summarize(rows):
         group = [r for r in rows if r["variant"] == variant]
         metrics[variant] = {"passed": sum(r["passed"] for r in group), "total": len(group),
             "errors": sum(bool(r.get("error")) for r in group),
+            "review_required": sum(bool(r.get("review_required")) for r in group),
+            "review_only": sum(r.get("assessment") == "review" for r in group),
             "input_tokens": sum((r.get("tokens") or {}).get("input") or 0 for r in group),
             "output_tokens": sum((r.get("tokens") or {}).get("output") or 0 for r in group),
             "elapsed_seconds": round(sum(r["seconds"] for r in group), 3)}
@@ -71,6 +73,7 @@ def run(mode="demo", repeats=1, acknowledge_cost=False, client=None):
     run_id = uuid.uuid4().hex
     record = {"id": run_id, "created": store.now(), "status": "running", "mode": mode,
         "model": os.getenv("OPENAI_MODEL", "gpt-5-mini") if mode=="live" else "hand-authored-fixtures",
+        "evaluator_version": EVALUATOR_VERSION, "scoring_policy": "All deterministic checks must pass; phrase matches require human review and are not proof of unsafe claims.",
         "suite_hash": digest(cases), "prompt_hashes": {k:digest(v) for k,v in PROMPTS.items()},
         "prompts": PROMPTS, "suite": cases, "repeats": repeats,
         "max_calls": len(cases)*2*repeats if mode=="live" else 0, "rows": [],

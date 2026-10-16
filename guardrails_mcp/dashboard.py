@@ -23,10 +23,10 @@ def build():
         with gr.Row():
             launch=gr.Button("Run seeded demo",variant="primary")
             reload=gr.Button("Refresh results")
-        table=gr.Dataframe(headers=["Run ID","Mode","Status","Baseline passes","Candidate passes","Regression pairs"],interactive=False)
+        table=gr.Dataframe(headers=["Run ID","Mode","Status","Baseline passes","Candidate passes","Raw check regression pairs"],interactive=False)
         selection=gr.Dropdown(label="Inspect a recorded run",choices=[])
         details=gr.JSON(label="Evidence, outputs, checks and provenance")
-        gr.Markdown("**Known gaps:** phrase checks miss paraphrases; references do not prove claims; no semantic-drift metric or model judge; no statistical confidence from this small suite. Provider errors are reported separately from regressions. Demo timings measure fixture code, not LLM latency. Token totals exclude unreported usage on failed calls.")
+        gr.Markdown("**Review guidance:** Pass counts and regression pairs use raw deterministic checks. A phrase match is a review flag, not proof of an unsafe claim. New records include matched excerpts and a review-only assessment; older records remain unchanged.\n\n**Known gaps:** phrase checks can flag negations or quotations and miss paraphrases; references do not prove claims; no semantic-drift metric or model judge; no statistical confidence from this small suite. Provider errors are reported separately from regressions. Demo timings measure fixture code, not LLM latency. Token totals exclude unreported usage on failed calls.")
         app.load(refresh,outputs=[table,selection,details]);reload.click(refresh,outputs=[table,selection,details]);launch.click(demo,outputs=[table,selection,details]);selection.change(lambda id:store.get(id) if id else {},selection,details)
     return app
 
@@ -35,5 +35,3 @@ def main():
     build().launch(server_name=os.getenv("GUARDRAILS_HOST","127.0.0.1"),server_port=7861,share=False)
 if __name__=="__main__":main()
 
-if __name__ == '__main__':
-    main()

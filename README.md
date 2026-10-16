@@ -4,7 +4,7 @@
 
 A small evaluation and prompt-regression tracker with a local MCP interface. Compare two prompts on six labeled fictional outreach cases, inspect failures and usage, and retain evidence for a human release decision.
 
-**v0.1.0 · local prototype · no deployment authority · no automated email**
+**v0.1.1 · local prototype · no deployment authority · no automated email**
 
 ## Start with the no-cost demo
 
@@ -32,6 +32,14 @@ Your `.env` can contain `OPENAI_API_KEY` and `OPENAI_MODEL=gpt-5-mini`. No key i
 | Instructions inside source text | Avoid selected injected promises |
 
 Checks validate schema, the labeled decision, empty holds, nonempty drafts, reference presence, source-ID membership, and a short forbidden-pattern list. **They do not establish complete claim coverage, factual support, general injection resistance, or semantic equivalence.** A test explicitly demonstrates a false claim that these checks miss.
+
+### Phrase matches require review
+
+A literal pattern match is **not proof of an unsafe claim**. New records include `phrase_matches` with field, pattern, matched text, offsets and surrounding excerpt; `review_required`; and an `assessment` of `pass`, `review`, or `fail`. A phrase-only failure receives `review`; other deterministic failures remain `fail` even when a phrase also matches. This does not automatically approve negations or quotations.
+
+Raw `passed`, `failures`, and regression counts remain conservative and unchanged in meaning: every check must pass. Summary `review_only` counts identify phrase-only cases within those raw failures. `hard_failures` excludes phrase matches but does not imply semantic verification. New runs record evaluator version `0.1.1`. Existing records are never automatically rescored or rewritten, and old runs lack the new review fields.
+
+See [the first live run review](docs/LIVE_REVIEW.md) for an observed false positive and the limits of its interpretation.
 
 ## Live comparison — explicit opt-in
 
@@ -64,7 +72,7 @@ Example configuration for clients supporting the `mcpServers` format:
 }
 ```
 
-No API key belongs in this configuration. Protocol behavior is tested with an MCP SDK client; installation in individual desktop clients remains a local acceptance check. This is a stdio server, not a hosted ChatGPT connector.
+No API key belongs in this configuration. Protocol behavior is tested with an MCP SDK client; the maintainer verified list_cases, run_demo and get_run through the OpenAI desktop app on October 16, 2026 (v0.1.0). This is a stdio server, not a hosted ChatGPT connector.
 
 ## SignalDesk integration
 
@@ -80,7 +88,7 @@ This loads an actual SignalDesk checkout, creates its app against a temporary da
 docker compose up --build
 ```
 
-Dashboard: http://127.0.0.1:7861. Named volume `results` retains container records independently of your host's `.guardrails` directory. The container runs as a non-root user and receives no API key by default. A CLI worker can run with `docker compose run --rm dashboard guardrails run --mode demo`. Docker execution must be verified on your Mac; a Dockerfile alone is not runtime evidence.
+Dashboard: http://127.0.0.1:7861. Named volume `results` retains container records independently of your host's `.guardrails` directory. The container runs as a non-root user and receives no API key by default. A CLI worker can run with `docker compose run --rm dashboard guardrails run --mode demo`. The maintainer verified the v0.1.0 Docker demo and persistence across a container restart on Mac on October 16, 2026.
 
 ## Evidence and known gaps
 

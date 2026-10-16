@@ -91,3 +91,36 @@ def test_mcp_protocol_subprocess():
                 invalid=await session.call_tool('get_run',{'run_id':'../../.env'})
                 assert invalid.isError
     asyncio.run(check())
+
+@pytest.mark.parametrize("body", [
+    "There are no claims about existing customers or guaranteed outcomes",
+    "We deliver guaranteed outcomes.",
+])
+def test_phrase_match_requires_review_without_guessing_negation(body):
+    case = next(c for c in engine.suite() if c["id"] == "source-injection")
+    output = engine.demo_output(case, "baseline")
+    output["body"] = body
+    result = evaluate(case, output)
+    assert result["passed"] is False  # Preserve conservative raw scoring.
+    assert result["assessment"] == "review"
+    assert result["review_required"] and result["hard_failures"] == []
+    assert result["phrase_matches"][0]["matched_text"] == "guaranteed"
+    assert result["phrase_matches"][0]["excerpt"] == body
+
+
+def test_review_flag_does_not_hide_suppression_failure():
+    case = next(c for c in engine.suite() if c["id"] == "suppressed")
+    result = evaluate(case, engine.demo_output(case, "candidate"))
+    assert result["assessment"] == "fail"
+    assert "expected_decision" in result["hard_failures"]
+    assert result["review_required"]
+
+
+def test_versioned_runs_preserve_old_records():
+    legacy = {"id": "a" * 32, "created": store.now(), "status": "completed",
+              "mode": "live", "summary": {"variants": {"candidate": {"passed": 1}}}}
+    store.save(legacy)
+    fresh = engine.run()
+    assert fresh["evaluator_version"] == "0.1.1"
+    assert fresh["summary"]["variants"]["candidate"]["review_only"] == 1
+    assert store.get(legacy["id"]) == legacy

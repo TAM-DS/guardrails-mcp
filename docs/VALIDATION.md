@@ -11,3 +11,10 @@ October 16, 2026; Linux, Python 3.12.14.
 - Registry publication is pending distribution packaging and verification. This project is not registered or certified.
 
 Known gaps: phrase-based checks miss paraphrases; source-ID membership is not entailment; six public cases are insufficient for a general quality claim; repeated samples do not establish statistical significance; there is no semantic-drift metric or authenticated multi-user service. Abrupt process termination can leave a running record.
+
+## v0.1.1 — October 16, 2026
+
+- 19 automated tests passed in the build environment, including the negated-guarantee example, a direct guarantee, suppression plus phrase match, evaluator versioning and unchanged legacy records.
+- v0.1.0 user-side acceptance completed: Mac installation (15 tests), actual SignalDesk fixture/API integration, Docker demo, persistence across restart, and OpenAI desktop MCP list_cases/run_demo/get_run. The patch still needs the normal Mac update and restart.
+- The maintainer ran one live comparison and retrieved it through MCP. See [human review](LIVE_REVIEW.md). Raw results remain 6/6 versus 1/6; one apparent phrase false positive is documented alongside them.
+- Phrase evidence and review-only counts are reporting additions; they do not establish semantic truth or automatically clear a flagged output. Existing records are not migrated or rescored.
