@@ -38,3 +38,7 @@ The official MCP Registry accepted io.github.TAM-DS/guardrails-mcp 0.1.1; indepe
 ## Open local operational issue
 
 After earlier Docker acceptance, the maintainer reported repeated dashboard container exits with code 137. The container was stopped successfully; the named results volume was retained. Cause is not yet established: exit 137 alone does not prove an out-of-memory condition. Inspect container state and recent logs before changing resource settings or declaring resolution.
+
+### Recovery observed
+
+The maintainer restarted the existing container without rebuilding or deleting its volume. Docker reported Up, the browser loaded the dashboard, a new seeded v0.1.1 run completed, and the earlier saved run remained visible. Inspection before restart reported OOMKilled=false and no application logs. Operation recovered; the original exit-137 cause remains unconfirmed. Screenshots supplied October 16 document the recovered dashboard and review guidance.

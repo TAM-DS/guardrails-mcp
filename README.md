@@ -10,6 +10,21 @@ A small evaluation and prompt-regression tracker with a local MCP interface. Com
 
 Published October 16, 2026: [PyPI v0.1.1](https://pypi.org/project/guardrails-mcp/0.1.1/) · [Official MCP Registry record](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.TAM-DS%2Fguardrails-mcp/versions/0.1.1). Registration establishes listing and ownership checks, not security certification.
 
+## Dashboard preview
+
+![GuardRails-MCP dashboard with seeded comparison results and recorded evaluator version](docs/images/dashboard-overview.png)
+
+*Seeded demo using six fictional cases: baseline 6/6, deliberately regressed candidate 3/6. These are hand-authored fixtures, not measured model performance.*
+
+<details>
+<summary>Recorded-run details, review guidance, and known gaps</summary>
+
+![Recorded-run metadata with review guidance and known gaps](docs/images/review-guidance.png)
+
+*The interface keeps evaluator version, prompt provenance, review guidance, and known gaps visible. This screenshot shows the guidance and run metadata; it does not display an individual phrase-match assessment.*
+
+</details>
+
 ## Start with the no-cost demo
 
 Python 3.11+, in an activated virtual environment:
@@ -110,4 +125,4 @@ python -m pytest -q
 
 Licensed under the [MIT License](LICENSE). Copyright © 2026 Tracy Anne Griffin Manning.
 
-Published package installation and a no-cost demo were verified in a fresh Mac virtual environment. See the validation notes for the remaining local Docker restart investigation.
+Published package installation and a no-cost demo were verified in a fresh Mac virtual environment. The local Docker dashboard recovered after restart, with saved results retained; the earlier forced stop’s cause remains unconfirmed. See the validation notes.
