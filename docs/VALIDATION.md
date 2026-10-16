@@ -18,3 +18,11 @@ Known gaps: phrase-based checks miss paraphrases; source-ID membership is not en
 - v0.1.0 user-side acceptance completed: Mac installation (15 tests), actual SignalDesk fixture/API integration, Docker demo, persistence across restart, and OpenAI desktop MCP list_cases/run_demo/get_run. The patch still needs the normal Mac update and restart.
 - The maintainer ran one live comparison and retrieved it through MCP. See [human review](LIVE_REVIEW.md). Raw results remain 6/6 versus 1/6; one apparent phrase false positive is documented alongside them.
 - Phrase evidence and review-only counts are reporting additions; they do not establish semantic truth or automatically clear a flagged output. Existing records are not migrated or rescored.
+
+## Maintainer acceptance completed for v0.1.1
+
+Mac: 19 tests passed in 0.43 seconds. Desktop MCP returned evaluator_version 0.1.1 and seller-history review evidence for run 906378402c254bc9b5565b4be4374ede after toggling the connection off/on. Docker rebuilt successfully; the maintainer's screenshot confirms new Review guidance and the retained v0.1.0 seeded run. These checks do not rerun or alter the original live evaluation.
+
+## Release packaging checks
+
+Wheel and source distribution built successfully with python-build; both passed twine check. The wheel was installed into an isolated target directory and exercised from outside the checkout (using existing dependency versions): six cases loaded, demo completed, evaluator 0.1.1 and review-only evidence confirmed. This is not a clean-machine dependency-resolution test. Archive inspection found no .env, SQLite or IDE files. Registry server.json passed the official 2025-12-11 JSON Schema. PyPI and registry publication remain pending; no license is selected.

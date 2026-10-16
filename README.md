@@ -1,5 +1,7 @@
 # GuardRails-MCP
 
+<!-- mcp-name: io.github.TAM-DS/guardrails-mcp -->
+
 **Did the prompt change actually make things better?**
 
 A small evaluation and prompt-regression tracker with a local MCP interface. Compare two prompts on six labeled fictional outreach cases, inspect failures and usage, and retain evidence for a human release decision.

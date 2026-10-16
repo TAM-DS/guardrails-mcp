@@ -1,16 +1,14 @@
-# Registry readiness — planned, not registered
+# Registry preparation — not registered
 
-The first release targets local stdio distribution. A working demo is not a registry listing.
+The root server.json targets PyPI package guardrails-mcp 0.1.1 and namespace io.github.TAM-DS/guardrails-mcp. It uses local stdio and an explicitly configured writable data directory. The README contains the matching mcp-name ownership marker and is included in package metadata.
 
-Before publishing:
+The manifest has been checked against the official 2025-12-11 JSON Schema. This does not validate ownership, package availability or server-side acceptance. GitHub namespace authentication and an existing public PyPI package are still required. The PyPI name returned HTTP 404 during preparation on October 16, 2026; it is not reserved.
 
-1. Validate the Mac client and Docker startup paths.
-2. Choose distribution rights deliberately; no license is currently included.
-3. Publish a versioned package to PyPI or an OCI image to a supported registry such as GHCR.
-4. Add ownership metadata required by the official MCP Registry.
-5. Generate and validate server.json against the then-current schema, using the actual package/image identifier and supported transport.
-6. Authenticate the publisher namespace, publish, and verify retrieval and clean-machine installation.
+See [release steps](RELEASE.md). The package is not yet published and no registry listing is claimed. Current local installation remains supported from this repository.
 
-Keep registry metadata truthful: six fictional cases, local prototype, seeded demo versus opt-in live evaluation, and no deployment authority. Do not describe this as an OWASP security scanner or a NIST-certified product.
+Sources checked October 16, 2026:
+- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/official-registry-requirements.md
+- https://github.com/modelcontextprotocol/registry/blob/main/docs/modelcontextprotocol-io/package-types.mdx
+- https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json
 
-Requirements: https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/official-registry-requirements.md
+Keep descriptions bounded: six fictional cases, seeded demo versus opt-in live evaluation, phrase review flags, known gaps, no deployment authority. This is not an OWASP security scanner or a NIST-certified product.
