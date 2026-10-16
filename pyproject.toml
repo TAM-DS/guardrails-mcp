@@ -3,6 +3,8 @@ name = "guardrails-mcp"
 version = "0.1.1"
 description = "Small, evidence-first prompt regression tracker with MCP tools"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{name = "Tracy Anne Griffin Manning"}]
 requires-python = ">=3.11"
 dependencies = ["mcp>=1.20,<2", "openai>=2,<3", "pydantic>=2,<3", "python-dotenv>=1,<2"]
@@ -17,7 +19,7 @@ guardrails = "guardrails_mcp.cli:main"
 guardrails-mcp = "guardrails_mcp.server:main"
 guardrails-dashboard = "guardrails_mcp.dashboard:main"
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 include = ["guardrails_mcp*"]

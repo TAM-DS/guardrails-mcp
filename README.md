@@ -104,4 +104,6 @@ No statistical accuracy estimate, semantic-drift score, model judge, security ce
 python -m pytest -q
 ```
 
-No license is included yet. No registry listing or published package is claimed.
+Licensed under the [MIT License](LICENSE). Copyright © 2026 Tracy Anne Griffin Manning.
+
+No registry listing or published package is claimed.

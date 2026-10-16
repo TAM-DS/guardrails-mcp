@@ -1,6 +1,6 @@
 # Release preparation — v0.1.1
 
-Status: prepared for review; not published to PyPI or the MCP Registry. No license has been selected. Do not describe this repository as licensed open source yet.
+Status: prepared for review; not published to PyPI or the MCP Registry. MIT licensed. Copyright © 2026 Tracy Anne Griffin Manning.
 
 ## Build
 
@@ -34,7 +34,7 @@ This launches a stdio MCP process and waits for a client. It does not start the 
 
 ## Remaining publication steps
 
-1. Confirm license and include its text and package metadata; rebuild and review.
+1. MIT license approved and included in package metadata and archives; review the final artifacts.
 2. Authenticate to the maintainer's PyPI account and establish package ownership. A name lookup returning 404 does not reserve the name.
 3. Upload the reviewed artifacts using PyPI tooling. Never paste credentials into chat.
 4. Test installation from PyPI in a fresh environment.

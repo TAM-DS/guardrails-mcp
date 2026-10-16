@@ -1,6 +1,6 @@
 FROM python:3.13-slim
 WORKDIR /app
-COPY pyproject.toml README.md ./
+COPY pyproject.toml README.md LICENSE ./
 COPY guardrails_mcp ./guardrails_mcp
 RUN pip install --no-cache-dir '.[dashboard]' && useradd --create-home runner && mkdir /data && chown runner:runner /data
 USER runner
