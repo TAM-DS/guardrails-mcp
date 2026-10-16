@@ -1,12 +1,14 @@
-# Secrets
 .env
-
-# Python
-__pycache__/
-*.pyc
+.env.*
+!.env.example
 .venv/
 venv/
-
-# macOS system files
+.idea/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.guardrails/
+build/
+dist/
 .DS_Store
-

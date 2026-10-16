@@ -1,5 +1,22 @@
 [project]
 name = "guardrails-mcp"
 version = "0.1.0"
-requires-python = ">=3.13"
-dependencies = []
+description = "Small, evidence-first prompt regression tracker with MCP tools"
+requires-python = ">=3.11"
+dependencies = ["mcp>=1.20,<2", "openai>=2,<3", "pydantic>=2,<3", "python-dotenv>=1,<2"]
+[project.optional-dependencies]
+dashboard = ["gradio>=5,<7"]
+dev = ["pytest>=8,<10", "httpx>=0.27,<1", "fastapi>=0.115,<1", "sqlalchemy>=2,<3"]
+[project.scripts]
+guardrails = "guardrails_mcp.cli:main"
+guardrails-mcp = "guardrails_mcp.server:main"
+guardrails-dashboard = "guardrails_mcp.dashboard:main"
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+include = ["guardrails_mcp*"]
+[tool.setuptools.package-data]
+guardrails_mcp = ["data/*.json"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,13 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "127.0.0.1:7861:7861"
+    volumes:
+      - results:/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+volumes:
+  results:

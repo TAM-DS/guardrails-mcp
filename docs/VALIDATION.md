@@ -1,0 +1,13 @@
+# Validation — v0.1.0
+
+October 16, 2026; Linux, Python 3.12.14.
+
+- 15 automated tests passed. Includes separate-process MCP initialization, tool discovery, demo execution and rejection of invalid run IDs.
+- Seeded demo: baseline 6/6, candidate 3/6; three deliberately introduced regressions. These are fixtures, not measured LLM results.
+- Actual SignalDesk v0.3.1 checkout was loaded against a temporary database. Meridian's fixture passed the evaluator's narrow checks; Brightfield approval returned HTTP 409. No customer records or live API calls were used. This is an offline integration harness, not an installed runtime hook.
+- Gradio dashboard returned HTTP 200 and its real demo callback persisted the expected 6/6 versus 3/6 result. Browser visual layout was not verified here. A build-environment SOCKS proxy required clearing proxy variables for localhost testing; this is not a user setup requirement.
+- Live provider contracts, incomplete responses, usage handling and sanitized errors were tested with mocks. No live evaluation was run by the assistant.
+- MCP client-specific desktop configuration, Mac installation, and Docker execution require user-side acceptance. Docker is unavailable in this build environment.
+- Registry publication is pending distribution packaging and verification. This project is not registered or certified.
+
+Known gaps: phrase-based checks miss paraphrases; source-ID membership is not entailment; six public cases are insufficient for a general quality claim; repeated samples do not establish statistical significance; there is no semantic-drift metric or authenticated multi-user service. Abrupt process termination can leave a running record.
