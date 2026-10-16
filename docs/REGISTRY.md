@@ -1,14 +1,14 @@
-# Registry preparation — not registered
+# Registry listing — v0.1.1
 
-The root server.json targets PyPI package guardrails-mcp 0.1.1 and namespace io.github.TAM-DS/guardrails-mcp. It uses local stdio and an explicitly configured writable data directory. The README contains the matching mcp-name ownership marker and is included in package metadata.
+Published October 16, 2026. The official registry returned status `active`, `isLatest: true`, and version `0.1.1` after GitHub namespace authentication and publication.
 
-The manifest has been checked against the official 2025-12-11 JSON Schema. This does not validate ownership, package availability or server-side acceptance. GitHub namespace authentication and an existing public PyPI package are still required. The PyPI name returned HTTP 404 during preparation on October 16, 2026; it is not reserved.
+- Namespace: `io.github.TAM-DS/guardrails-mcp`
+- [Public registry record](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.TAM-DS%2Fguardrails-mcp/versions/0.1.1)
+- [PyPI package](https://pypi.org/project/guardrails-mcp/0.1.1/)
+- [Successful publishing workflow](https://github.com/TAM-DS/guardrails-mcp/actions/runs/38944535947)
 
-See [release steps](RELEASE.md). The package is not yet published and no registry listing is claimed. Current local installation remains supported from this repository.
+The root server.json uses local stdio and an explicitly configured writable GUARDRAILS_DATA_DIR. The README contains its matching mcp-name ownership marker, included in package metadata. No API key is required for the four MCP demo/read tools.
 
-Sources checked October 16, 2026:
-- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/official-registry-requirements.md
-- https://github.com/modelcontextprotocol/registry/blob/main/docs/modelcontextprotocol-io/package-types.mdx
-- https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json
+The manifest passed the official 2025-12-11 JSON Schema and was accepted by the registry. A fresh Mac virtual environment installed version 0.1.1 from PyPI and completed the seeded demo. The existing desktop integration was checked separately; installation via a registry-consuming client has not been verified.
 
-Keep descriptions bounded: six fictional cases, seeded demo versus opt-in live evaluation, phrase review flags, known gaps, no deployment authority. This is not an OWASP security scanner or a NIST-certified product.
+See [release steps](RELEASE.md) and [validation](VALIDATION.md). Registration is not security certification or deployment approval. Keep descriptions bounded: six fictional cases, seeded demo versus opt-in live evaluation, phrase review flags, and known gaps. This is not an OWASP security scanner or a NIST-certified product.

@@ -1,6 +1,6 @@
-# Release preparation — v0.1.1
+# Release — v0.1.1
 
-Status: prepared for review; not published to PyPI or the MCP Registry. MIT licensed. Copyright © 2026 Tracy Anne Griffin Manning.
+Status: published to PyPI and the official MCP Registry on October 16, 2026. MIT licensed. Copyright © 2026 Tracy Anne Griffin Manning.
 
 ## Build
 
@@ -24,7 +24,7 @@ The wheel includes the fictional suite and all three entry points. The source di
 - Docker v0.1.1 rebuilt; updated guidance and retained legacy run visually confirmed.
 - One live v0.1.0 comparison is documented with its apparent evaluator false positive, not silently rescored. See LIVE_REVIEW.md.
 
-## Installation after PyPI publication only
+## Published package installation
 
 ```bash
 uvx --from guardrails-mcp==0.1.1 guardrails-mcp
@@ -32,16 +32,13 @@ uvx --from guardrails-mcp==0.1.1 guardrails-mcp
 
 This launches a stdio MCP process and waits for a client. It does not start the dashboard. The MCP client launches this command itself. Configure an absolute GUARDRAILS_DATA_DIR to persist records consistently. No API key is required for MCP demo/read tools. Dashboard installation requires the dashboard extra.
 
-## Remaining publication steps
+## Publication evidence
 
-1. MIT license approved and included in package metadata and archives; review the final artifacts.
-2. Authenticate to the maintainer's PyPI account and establish package ownership. A name lookup returning 404 does not reserve the name.
-3. Upload the reviewed artifacts using PyPI tooling. Never paste credentials into chat.
-4. Test installation from PyPI in a fresh environment.
-5. Authenticate the GitHub namespace with the official MCP publisher and submit server.json.
-6. Retrieve the registry entry and verify that its install configuration works.
-
-A schema-valid manifest is preparation, not registration, certification, or a verified package listing.
+- GitHub Actions build and publish jobs succeeded: [run 38944535947](https://github.com/TAM-DS/guardrails-mcp/actions/runs/38944535947).
+- PyPI returned the 0.1.1 wheel and source distribution.
+- A fresh Mac virtual environment installed from PyPI; demo run `dbf50e8080f1422a9a87e646705826de` completed with evaluator package 0.1.1, baseline 6/6, candidate 3/6, zero errors, and one phrase-only review case. These are seeded fixtures, not live model measurements.
+- The maintainer published server.json with mcp-publisher; independent registry retrieval confirmed active version 0.1.1.
+- Registry-driven client installation remains untested. A later local Docker exit-137 restart report remains under investigation; the container was stopped while preserving its named volume. Neither issue is hidden by the publication result.
 
 ## GitHub Actions Trusted Publisher setup
 

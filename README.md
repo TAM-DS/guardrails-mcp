@@ -8,12 +8,14 @@ A small evaluation and prompt-regression tracker with a local MCP interface. Com
 
 **v0.1.1 · local prototype · no deployment authority · no automated email**
 
+Published October 16, 2026: [PyPI v0.1.1](https://pypi.org/project/guardrails-mcp/0.1.1/) · [Official MCP Registry record](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.TAM-DS%2Fguardrails-mcp/versions/0.1.1). Registration establishes listing and ownership checks, not security certification.
+
 ## Start with the no-cost demo
 
-Python 3.11+ (Mac setup uses your existing project virtual environment):
+Python 3.11+, in an activated virtual environment:
 
 ```bash
-python -m pip install -e '.[dev,dashboard]'
+python -m pip install "guardrails-mcp[dashboard]==0.1.1"
 guardrails run --mode demo
 guardrails-dashboard
 ```
@@ -21,6 +23,8 @@ guardrails-dashboard
 Open http://127.0.0.1:7861. Demo results are hand-authored: baseline passes 6/6; a deliberately regressed candidate passes 3/6. This tests the scoring/reporting path, not model performance. Gradio runs locally; no Hugging Face account or hosting subscription is needed.
 
 Your `.env` can contain `OPENAI_API_KEY` and `OPENAI_MODEL=gpt-5-mini`. No key is needed for demo mode or MCP tools. Never commit `.env`.
+
+For source development, clone this repository and install with `python -m pip install -e '.[dev,dashboard]'`.
 
 ## What it checks
 
@@ -94,7 +98,7 @@ Dashboard: http://127.0.0.1:7861. Named volume `results` retains container recor
 
 ## Evidence and known gaps
 
-See [validation](docs/VALIDATION.md), [governance mapping](docs/GOVERNANCE.md), and [registry readiness](docs/REGISTRY.md).
+See [validation](docs/VALIDATION.md), [governance mapping](docs/GOVERNANCE.md), and [registry listing](docs/REGISTRY.md).
 
 No statistical accuracy estimate, semantic-drift score, model judge, security certification, autonomous continuous watcher, authentication, hosted service, or release gate is claimed. The suite is visible and small; prompt authors can overfit to it. Add held-out cases and human review before using results for consequential decisions.
 
@@ -106,4 +110,4 @@ python -m pytest -q
 
 Licensed under the [MIT License](LICENSE). Copyright © 2026 Tracy Anne Griffin Manning.
 
-No registry listing or published package is claimed.
+Published package installation and a no-cost demo were verified in a fresh Mac virtual environment. See the validation notes for the remaining local Docker restart investigation.

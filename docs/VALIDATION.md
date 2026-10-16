@@ -1,4 +1,4 @@
-# Validation — v0.1.0
+# Validation record
 
 October 16, 2026; Linux, Python 3.12.14.
 
@@ -11,6 +11,8 @@ October 16, 2026; Linux, Python 3.12.14.
 - Registry publication is pending distribution packaging and verification. This project is not registered or certified.
 
 Known gaps: phrase-based checks miss paraphrases; source-ID membership is not entailment; six public cases are insufficient for a general quality claim; repeated samples do not establish statistical significance; there is no semantic-drift metric or authenticated multi-user service. Abrupt process termination can leave a running record.
+
+The entries above describe the initial v0.1.0 validation state; subsequent acceptance and publication are recorded below.
 
 ## v0.1.1 — October 16, 2026
 
@@ -26,3 +28,13 @@ Mac: 19 tests passed in 0.43 seconds. Desktop MCP returned evaluator_version 0.1
 ## Release packaging checks
 
 Wheel and source distribution built successfully with python-build; both passed twine check. The wheel was installed into an isolated target directory and exercised from outside the checkout (using existing dependency versions): six cases loaded, demo completed, evaluator 0.1.1 and review-only evidence confirmed. This is not a clean-machine dependency-resolution test. Archive inspection found no .env, SQLite or IDE files. Registry server.json passed the official 2025-12-11 JSON Schema. PyPI and registry publication remain pending. MIT license subsequently approved by the maintainer and included in both archives; package metadata declares MIT.
+
+## Published distribution acceptance — October 16, 2026
+
+GitHub Actions run 38944535947 completed both build and publish jobs. PyPI JSON independently confirmed the wheel and source archive for 0.1.1. The maintainer installed the published package into a fresh Mac virtual environment outside the source checkout. Package version was 0.1.1; demo run dbf50e8080f1422a9a87e646705826de completed with baseline 6/6, candidate 3/6, zero errors, three review-required candidate cases and one review-only case. Zero tokens were used. This verifies a published installation and seeded execution, not live model quality.
+
+The official MCP Registry accepted io.github.TAM-DS/guardrails-mcp 0.1.1; independent API retrieval returned active/latest. This supersedes the historical pending-publication statements above. Registry-consuming client installation is not yet tested.
+
+## Open local operational issue
+
+After earlier Docker acceptance, the maintainer reported repeated dashboard container exits with code 137. The container was stopped successfully; the named results volume was retained. Cause is not yet established: exit 137 alone does not prove an out-of-memory condition. Inspect container state and recent logs before changing resource settings or declaring resolution.
