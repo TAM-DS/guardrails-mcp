@@ -1,6 +1,6 @@
 # Mac handoff
 
-Existing project: `/Users/tracy-m5/Projects/GuardRails-MCP`.
+Existing project: your local checkout of this repository.
 
 The existing `.env` and `.venv` stay local. Before updating, inspect `git status --short`. If only `.gitignore` has local modifications, preserve it with:
 
